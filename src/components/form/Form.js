@@ -1,19 +1,20 @@
 import { useState } from "react";
 import "./Form.css";
 
-function Form({ getFormData, formData }) {
+function Form({ getFormData }) {
   const [nameInput, setNameInput] = useState("");
   const [numberInput, setNumberInput] = useState("");
   function onSubmitHandler(e) {
     e.preventDefault();
-    getFormData([
-      { id: Date.now(), name: nameInput, number: numberInput },
-      ...formData,
+    if(!nameInput || !numberInput){
+      
+    }
+    getFormData((prev) => [
+      { id: Date.now(), name: nameInput, number: numberInput }, ...prev
     ]);
     setNameInput('')
     setNumberInput('')
   }
-
   return (
     <form className="form" onSubmit={onSubmitHandler}>
       <div>
