@@ -5,15 +5,13 @@ import Modal from "./components/modal/Modal";
 
 function App() {
   const [formData, setFormData] = useState([]);
-  const [mistake, setMistake] = useState('false')
-
-  console.log(formData);
+  const [mistake, setMistake] = useState(false);
 
   return (
     <section>
-      <Form getFormData={setFormData}></Form>
-      <InfoList formData={formData}></InfoList>
-      <Modal></Modal>
+      <Form getFormData={setFormData} getMistake={setMistake} />
+      <InfoList formData={formData} />
+      {mistake && <Modal setMistake={setMistake} />}
     </section>
   );
 }
