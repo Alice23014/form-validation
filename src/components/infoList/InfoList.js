@@ -1,9 +1,9 @@
 import "./InfoList.css";
 
 function InfoList({ formData, setFormData }) {
-  const handleDelete = (id) => {
+  const handleDelete = (id) =>
     setFormData(formData.filter((currentItem) => currentItem.id !== id));
-  };
+
   return (
     <ul>
       {formData.map((item) => (
