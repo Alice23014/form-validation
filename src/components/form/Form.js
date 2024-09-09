@@ -1,18 +1,23 @@
 import { useState } from "react";
 import "./Form.css";
 
-function Form({ getFormData, getMistake }) {
+function Form({ getFormData, getMistake, getMistakeText }) {
   const [nameInput, setNameInput] = useState("");
   const [numberInput, setNumberInput] = useState("");
 
   function onSubmitHandler(e) {
     e.preventDefault();
+    if (!nameInput && !numberInput) {
+      return (
+        getMistake(true) & getMistakeText("Имя и номер не могут быть пустыми")
+      );
+    }
     if (!nameInput) {
-      return getMistake(true);
+      return getMistake(true) & getMistakeText("Имя не может быть пустым");
     }
 
     if (!numberInput) {
-      return getMistake(true);
+      return getMistake(true) & getMistakeText("Номер не может быть пустым");
     }
     if (nameInput && numberInput) {
       getFormData((prev) => [

@@ -1,10 +1,10 @@
 import "./Modal.css";
 
-function Modal({ setMistake }) {
+function Modal({ setMistake, mistakeText }) {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <p>Введите что-то в форму</p>
+        <p>{mistakeText}</p>
         <button onClick={() => setMistake(false)}>Закрыть окно</button>
       </div>
     </div>
